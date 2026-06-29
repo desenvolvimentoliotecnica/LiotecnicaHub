@@ -62,7 +62,7 @@ Catálogo IAM centralizado: sistemas, módulos, permissões (`portalrh.vagas.cri
 ### Passo a passo (Windows)
 
 ```bat
-cd D:\Projetos\PortalRH\LiotecnicaHub\LiotecnicaHub\LiotecnicaHub.Web
+cd D:\Projetos\LiotecnicaHub\LiotecnicaHub\LiotecnicaHub.Web
 dotnet run --launch-profile http
 ```
 
@@ -84,7 +84,7 @@ O perfil `http` em `Properties/launchSettings.json` já define `ASPNETCORE_ENVIR
 Docker **não é obrigatório** para dev. Use apenas para subir stack completa (Hub + PostgreSQL) como em homologação:
 
 ```bat
-cd D:\Projetos\PortalRH\LiotecnicaHub
+cd D:\Projetos\LiotecnicaHub
 docker compose -f docker-compose.hub.yml up -d --build
 ```
 
