@@ -11,6 +11,14 @@ public sealed class HubUserListItem
     public DateTimeOffset UpdatedAtUtc { get; init; }
 }
 
+public sealed class HubUserDeleteInfo
+{
+    public Guid Id { get; init; }
+    public string Name { get; init; } = string.Empty;
+    public string Email { get; init; } = string.Empty;
+    public bool IsHubAdmin { get; init; }
+}
+
 public sealed class HubUserInput
 {
     public Guid Id { get; set; }
@@ -20,7 +28,10 @@ public sealed class HubUserInput
     public List<Guid> SelectedApplicationIds { get; set; } = [];
     public string? NewPassword { get; set; }
     public bool ResetPasswordToDefault { get; set; }
+    /// <summary>Remove senha local para o login usar LDAP/SSO em vez da senha do Hub.</summary>
+    public bool ClearLocalPassword { get; set; }
     public bool HasLocalPassword { get; set; }
+    public bool PreferDirectoryAuth { get; set; }
 }
 
 public sealed class HubAuditListItem
@@ -50,6 +61,8 @@ public interface IHubAccessAdminService
     Task<HubUserInput?> GetUserAsync(Guid id, CancellationToken ct);
     Task<(bool Success, string? Error)> CreateUserAsync(HubUserInput input, CancellationToken ct);
     Task<(bool Success, string? Error)> UpdateUserAsync(HubUserInput input, CancellationToken ct);
+    Task<HubUserDeleteInfo?> GetUserDeleteInfoAsync(Guid id, CancellationToken ct);
+    Task<(bool Success, string? Error)> DeleteUserAsync(Guid id, CancellationToken ct);
 
     Task<IReadOnlyList<HubAuditListItem>> ListAuditsAsync(int take, CancellationToken ct);
     Task<IReadOnlyList<HubSelectOption>> GetApplicationOptionsAsync(CancellationToken ct);
