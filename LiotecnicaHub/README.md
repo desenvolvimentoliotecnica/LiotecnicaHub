@@ -1,5 +1,8 @@
 # Liotecnica Hub
 
+Repositório dedicado: [desenvolvimentoliotecnica/LiotecnicaHub](https://github.com/desenvolvimentoliotecnica/LiotecnicaHub)  
+Branches: `DEV` (desenvolvimento), `HML` (homologação), `PRD` (produção).
+
 Launcher corporativo **Liotecnica Hub** — portal único de entrada para aplicativos internos (Portal RH e outros), com autenticação **Microsoft Entra ID** e painel administrativo.
 
 ## Arquitetura
@@ -59,7 +62,7 @@ Catálogo IAM centralizado: sistemas, módulos, permissões (`portalrh.vagas.cri
 ### Passo a passo (Windows)
 
 ```bat
-cd D:\Projetos\PortalRH\RH-devops-Lucas\LiotecnicaHub\LiotecnicaHub.Web
+cd D:\Projetos\PortalRH\LiotecnicaHub\LiotecnicaHub\LiotecnicaHub.Web
 dotnet run --launch-profile http
 ```
 
@@ -81,7 +84,7 @@ O perfil `http` em `Properties/launchSettings.json` já define `ASPNETCORE_ENVIR
 Docker **não é obrigatório** para dev. Use apenas para subir stack completa (Hub + PostgreSQL) como em homologação:
 
 ```bat
-cd D:\Projetos\PortalRH\RH-devops-Lucas
+cd D:\Projetos\PortalRH\LiotecnicaHub
 docker compose -f docker-compose.hub.yml up -d --build
 ```
 
